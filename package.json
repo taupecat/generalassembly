@@ -1,0 +1,17 @@
+{
+  "name": "general-assembly",
+  "version": "1.0.0",
+  "description": "A self-contained virtual machine for building our WordPress theme and plugin.",
+  "author": "Tracy Rotton",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-ruby-sass": "^1.0.5",
+    "gulp-util": "^3.0.6"
+  }
+}
