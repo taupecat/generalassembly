@@ -22,7 +22,7 @@
     "wpackagist-plugin/wordpress-importer":"*"
   },
   "extra": {
-    "wordpress-install-dir": ".",
+    "wordpress-install-dir": "wp",
     "installer-paths": {
       "wp-content/plugins/{$name}": ["type:wordpress-plugin"]
     }
