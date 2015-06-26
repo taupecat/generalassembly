@@ -65,19 +65,36 @@ Vagrant.configure(2) do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
-    rm -rf /var/www/html
-    ln -s /vagrant /var/www/html
+
+    # System updates and upgrades
     apt-get update
     apt-get install vim -y
+
+    # Set up apache, including linking /vagrant as our new /var/www/html
+    rm -rf /var/www/html
+    ln -s /vagrant /var/www/html
+    sed -i 's/www-data/vagrant/' /etc/apache2/envvars
+
+    # Set up composer
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+    # Set up WP-CLI
     curl -o /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
     chmod 755 /usr/local/bin/wp
+
+    # Node, NPM and Gulp
     curl -sL https://deb.nodesource.com/setup | bash -
     apt-get install nodejs -y
     npm install -g gulp
-    gem install sass
     cd /var/www/html
     npm install
+
+    # Sass
+    gem install sass
+
+    # Create database and user
+    mysqladmin -u root -proot create generalassembly
+    mysql -u root -proot -e "GRANT all ON generalassembly.* TO 'ga'@'localhost' IDENTIFIED BY 'ga1776'"
   SHELL
 
 end
