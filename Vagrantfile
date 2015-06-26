@@ -74,6 +74,7 @@ Vagrant.configure(2) do |config|
     rm -rf /var/www/html
     ln -s /vagrant /var/www/html
     sed -i 's/www-data/vagrant/' /etc/apache2/envvars
+    service apache2 restart
 
     # Set up composer
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer

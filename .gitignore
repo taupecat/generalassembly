@@ -8,3 +8,4 @@ node_modules
 # WordPress Core Files
 wp
 wp-content
+wp-config.php
