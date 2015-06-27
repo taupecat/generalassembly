@@ -7,5 +7,5 @@ node_modules
 
 # WordPress Core Files
 wp
-wp-content
+wp-content/plugins
 wp-config.php
