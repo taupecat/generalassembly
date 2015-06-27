@@ -9,4 +9,4 @@ node_modules
 wp
 wp-content/plugins
 wp-config.php
-wp-content/upload
+wp-content/uploads
